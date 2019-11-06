@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Your Destination</title>
+    <link rel='icon' href='https://lh3.googleusercontent.com/0qPaJZIoUvSxoTNszKh4ysDaf-_AWJS0qjUphRK1qSVTfBphWDc4ZV23iWtnMwQz2KYmtdg1tCAzD7yRUh5QPakUs4wCSp1OgxrlB0X9d-CViMpPLJAh3q-hvSAMAxxEeBQpKCZacQ=w2400'>
+    <link rel='stylesheet' href='index.css'> 
+</head>
+<body>
+    <header>
+        <div class='background'></div>
+        <div class='formContainer'>
+            <form>
+                Your Destination:
+                <input type='text' name='search-place' id='search-place' placeholder='Oceanside' required>
+                <input type='submit' value='Poof!' class='submit'>
+            </form>
+        </div>
+    </header>
+    <main class='hidden'>
+        <div class='mainContainer'>
+            <div class='weather'></div>
+            <div class='events'></div>
+        </div>
+        <div class='bottomContainer'>
+            <div class='currency'></div>
+        </div>
+    </main>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src='index.js'></script>
+</body>
+</html>
