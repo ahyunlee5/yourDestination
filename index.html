@@ -10,19 +10,25 @@
 </head>
 <body>
     <header>
-        <div class='background'></div>
+        <div class='background'>
+            <img src='https://media.giphy.com/media/t6conLiC13yyaqgijR/giphy.gif' alt='background image' class='background-image'>
+        </div>
         <div class='formContainer'>
             <form>
-                Your Destination:
-                <input type='text' name='search-place' id='search-place' placeholder='Oceanside' required>
+                <input type='text' name='search-place' id='search-place' placeholder='Your Destination:' required>
                 <input type='submit' value='Poof!' class='submit'>
             </form>
         </div>
     </header>
     <main class='hidden'>
         <div class='mainContainer'>
-            <div class='weather'></div>
-            <div class='events'></div>
+            <div class='weather'>
+                <div class='error-message-weather'></div>
+            </div>
+            <div>
+               <div class='error-message-events'></div> 
+               <ul class='events'></ul>
+            </div>
         </div>
         <div class='bottomContainer'>
             <div class='currency'></div>

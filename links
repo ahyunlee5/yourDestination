@@ -1,0 +1,7 @@
+client ID for weather = J5YO3IQNB235ED5HSIF25UGXEKM0EQRIJ2KB0R2IELSNST3Y
+client secret = TOH3JWOLW0M11S0KZMTQMJ35USVF5RG1YJG4OWTP5GB0EVEM
+
+weather base url = http://api.weatherstack.com/
+
+
+foursqure = GET https://api.foursquare.com/v2/venues/search
