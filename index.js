@@ -103,6 +103,48 @@ function getEventsInfo() {
     });
 }
 
+// const apiKeyCurrency = '7f0163d4a773b6371639d9b503451423';
+// const baseURLCurrency = 'http://apilayer.net/api/live';
+
+// function displayCurrencyResults(responseJson) {
+//   console.log(responseJson);
+//   console.log('currency');
+//   $('.currency').empty();
+//   $('.currency').html(
+//       `<li>${responseJson.timestamp}</li>
+//       <li>${responseJson.quotes}</li>`
+//   );
+
+// }
+
+// function getCurrencyInfo() {
+//   const params = {
+//     access_key: apiKeyCurrency,
+//     currencies: {
+//       CAD: 'Canadian Dollar',
+//       KRW: 'South Korean Won',
+//       EUR: 'Euro',
+//     },
+//     format: 1,
+//   };
+//   const currencyQueryString = formatQueryParams(params);
+//   const currencyURL = baseURLCurrency + '?' + currencyQueryString;
+
+//   console.log(currencyURL);
+
+//   fetch(currencyURL)
+//     .then(response => {
+//       if(response.ok) {
+//         return response.json();
+//       }
+//       throw new Error (response.statusText);
+//     })
+//     .then(responseJson => displayCurrencyResults(responseJson))
+//     .catch(error => {
+//       $('.error-message-events').text(`Error Occured: ${error.message}`);
+//     });
+// }
+
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
@@ -112,6 +154,7 @@ function watchForm() {
 
     getEventsInfo(searchPlace);
     getWeatherInfo(searchPlace, hourly, interval);
+    // getCurrencyInfo();
   });
 }
 
