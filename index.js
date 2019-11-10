@@ -12,9 +12,9 @@ function formatQueryParams(params) {
 function displayWeatherResult(responseJson) {
   console.log(responseJson);
   $('.weather').empty();
+  $('.weather-top-header').html('<h3>Weather</h3>');
   $('.weather').html(
-    `<li>${responseJson.location.name}:</li>
-    <li><img src="${responseJson.current.weather_icons}" alt="weather icon"></li>
+    `<li><img src="${responseJson.current.weather_icons}" alt="weather icon"></li>
         <li>Temperature: ${responseJson.current.temperature}</li>
         <li>Description: ${responseJson.current.weather_description}</li>
         <li>Feels like: ${responseJson.current.feelslike}</li>`
@@ -53,16 +53,16 @@ const eventsClientID = 'J5YO3IQNB235ED5HSIF25UGXEKM0EQRIJ2KB0R2IELSNST3Y';
 const eventsClientSecret = 'TOH3JWOLW0M11S0KZMTQMJ35USVF5RG1YJG4OWTP5GB0EVEM';
 const baseURLEvents = 'https://api.foursquare.com/v2/venues/explore';
 
-function displayEventResults(responseJsun) {
-  console.log(responseJsun);
+function displayEventResults(responseJson) {
+  console.log(responseJson);
   $('.events').empty();
-  for (let i=0; i < responseJsun.totalResults; i++) {
+  $('.events-top-header').html('<h3>Events</h3>');
+  for (let i = 0; i < responseJson.response.groups[0].items.length; i++) {
     $('.events').append(
-      `<li><h1>${responseJsun.groups[i].items.venue.name}</h1></li>
-      <li><h2>${responseJsun.groups[i].categories.name}</h2></li>
-      <li><h3>${responseJsun.groups[i].items.venue.formattedAddress}</h3></li>`
+      `<li><img src='${responseJson.response.groups[0].items[i].venue.categories[0].icon.prefix} + ${responseJson.response.groups[0].items[i].venue.categories[0].icon.suffix}'</li>
+      <li>${responseJson.response.groups[0].items[i].venue.name} (${responseJson.response.groups[0].items[i].venue.categories[0].name})</li>
+      <li>    - ${responseJson.response.groups[0].items[i].venue.location.formattedAddress}</li>`
     );}
-  
   console.log('events working?');
 }
 
@@ -79,8 +79,8 @@ function getEventsInfo() {
     client_secret: eventsClientSecret,
     near: $('#search-place').val(),
     section: 'topPicks',
-    limit: 50,
-    offset: 10,
+    limit: 30,
+    offset: 5,
     sortByPopularity: 1,
     v: today,
   };
@@ -97,7 +97,7 @@ function getEventsInfo() {
       }
       throw new Error (response.statusText);
     })
-    .then(responseJsun => displayEventResults(responseJsun))
+    .then(responseJson => displayEventResults(responseJson))
     .catch(error => {
       $('.error-message-events').text(`Error Occured: ${error.message}`);
     });
