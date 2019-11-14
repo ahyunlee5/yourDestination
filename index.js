@@ -66,25 +66,24 @@ const eventsClientID = 'J5YO3IQNB235ED5HSIF25UGXEKM0EQRIJ2KB0R2IELSNST3Y';
 const eventsClientSecret = 'TOH3JWOLW0M11S0KZMTQMJ35USVF5RG1YJG4OWTP5GB0EVEM';
 const baseURLEvents = 'https://api.foursquare.com/v2/venues/explore';
 
-
 function displayEventResults(responseJson) {
-
   console.log(responseJson);
   $('.events').empty();
   $('.events-top-header').html('<img src="https://lh3.googleusercontent.com/Otrv0PBO7rwv4YVlkcqjv9eEFri6pHWL_uQtzZtTvN4-KoXkrIwxzM6IDSw4WP-pFGFAXE1I_LV_IAH_WSBNEiDqXs6JdvcfCvqLnkd-BaVtInFwpYYTs6ln6ttoXiU7hrnRqtvUag=w2400" alt="Foursqure Icon" class="pofHeaderIcon headerIcon"><h3>Points of Interest</h3>');
   for (let i = 0; i < responseJson.response.groups[0].items.length; i++) {
-
     let venue = responseJson.response.groups[0].items[i].venue;
-    let venueId = venue.id;
+    let { prefix, suffix } = venue.categories[0].icon;
 
+    // console.log(`${venue.categories[0].icon.prefix}64${venue.categories[0].icon.suffix}`);
     $('.events').append(
-      `<li>${venue.name} (${venue.categories[0].name})</li>
-      <li>    - ${venue.location.formattedAddress}</li>
-      <div id="image-container-${venueId}"></div>`
+      `<li id="icon-contianer"><img src=${venue.categories[0].icon.prefix}64${venue.categories[0].icon.suffix}></li>
+      <li>${venue.name} (${venue.categories[0].name})</li>
+      <li>    - ${venue.location.formattedAddress}</li>`
     );
   }
   
   console.log('events working?');
+
 }
 let today = new Date();
 let dd = String(today.getDate()).padStart(2,'0');
