@@ -55,7 +55,7 @@ form {
 }
 #search-place {
     height: 43px;
-    width: 300px;
+    width: 450px;
 
     /* border: none; */
 
@@ -83,7 +83,6 @@ button {
     display: inline-flex;
     justify-content: space-between;
     text-align: center;
-    border-bottom: 3px dotted black;
     font-size: 20px;
 }
 .weather {
