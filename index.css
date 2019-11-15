@@ -19,9 +19,9 @@ header {
     width: 100%;
 
     background-color: #88BAAE;
+    border-radius: 25px;
 
     position: relative;
-    /* text-align: center; */
     animation-name: moveToLeft;
     animation-duration: 3s;
     animation-iteration-count: 1;
@@ -38,6 +38,7 @@ header {
     width: auto;
     max-height: 100%;
     height: auto;
+    border-radius: 25px;
 }
 #slogan {
     padding-left: 150px;
@@ -48,7 +49,6 @@ header {
 
 form {
     font-size: 30px;
-    /* border-bottom: 5px dotted black; */
 
     animation-name: hideUnhide;
     animation-delay: 3s;
@@ -62,9 +62,8 @@ form {
     height: 43px;
     width: 450px;
 
-    /* border: none; */
-
     font-size: 20px;
+    padding-top: 20px;
 }
 button {
     border: none;
@@ -103,7 +102,8 @@ button {
 
     background: #16394b;
     border-radius: 25px;
-    margin: 10px;
+    margin: 25px;
+    padding: 25px;
 }
 .weatherIcon {
     float: left;
@@ -136,8 +136,7 @@ button {
 
     background-color: #88BAAE;
     color: white;
-/* 
-    background: rgb(89, 89, 230); */
+    border-radius: 25px;
 }
 .events-top-header {
     background-color: #f94777;
@@ -233,8 +232,12 @@ button {
 
         padding-top: 0px;
     }
-    .formContainer {
-        padding: 0px;
+}
+@media screen and (max-width: 640px) {
+    button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 @media screen and (max-width: 585px) {
@@ -247,19 +250,26 @@ button {
         max-height: auto;
         height: auto;
     }
-    button {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
     #slogan {
         font-size: 13vw;
         padding: 0;
     }
+    .weather {
+        width: 100%;
+    }
+    .weatherInfo {
+        font-size: 5.5vw;
+    }
 }
 @media screen and (max-width: 450px) {
-    form {
-        width: 357px;
+    #search-place {
+        width: 100%;
+    }
+    .weatherIcon {
+        max-width: 100%;
+        width: auto;
+        max-height: 100%;
+        height: auto;
     }
 }
 
