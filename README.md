@@ -1,4 +1,8 @@
 # yourDestination
 API capstone project
 
-A simple platform where you search a location and it will return the weahter for that location along with points of interest!
+
+https://ahyunlee5.github.io/yourDestination/
+This app simply takes your location input and returns information of the weather and points of interest that have been trending by foursquare members.
+
+This site uses HTML, CSS, JavaScript, and jQuery
