@@ -24,7 +24,6 @@ function formatQueryParams(params) {
 }
 
 function displayWeatherResult(responseJson) {
-  console.log(responseJson);
   $('.weather').empty();
   $('.weather-top-header').html('<img src="https://lh3.googleusercontent.com/dEZIXqySRRWUsxYY33wYClESqpWWzZIDWBHrfk5TcVF_fzag1Cebk6OnkJfCMoSuT-NaXiha4bI0_EE3PgVAJzHGALWarS2kaXzhWH7ouYnKN5-QsdPwsbvUZVPSiPbt2fqub033Cw=w2400" alt="weather icon" class="weatherHeaderIcon headerIcon"><h3>Weather</h3>');
   $('.weather').html(
@@ -33,7 +32,6 @@ function displayWeatherResult(responseJson) {
         <li class='weatherInfo'>Description: ${responseJson.current.weather_descriptions[0]}</li>`
   );
   $('main').removeClass('hidden');
-  console.log('weather functioning?');
 }
 
 function getWeatherInfo() {
@@ -47,8 +45,6 @@ function getWeatherInfo() {
   
   const weatherQueryString = formatQueryParams(params);
   const weatherURL = baseURLWeather + '?' + weatherQueryString;
-
-  console.log(weatherURL);
 
   fetch(weatherURL)
     .then(response => {
@@ -67,7 +63,6 @@ const eventsClientSecret = 'TOH3JWOLW0M11S0KZMTQMJ35USVF5RG1YJG4OWTP5GB0EVEM';
 const baseURLEvents = 'https://api.foursquare.com/v2/venues/explore';
 
 function displayEventResults(responseJson) {
-  console.log(responseJson);
   $('.events').empty();
   $('.events-top-header').html('<img src="https://lh3.googleusercontent.com/Otrv0PBO7rwv4YVlkcqjv9eEFri6pHWL_uQtzZtTvN4-KoXkrIwxzM6IDSw4WP-pFGFAXE1I_LV_IAH_WSBNEiDqXs6JdvcfCvqLnkd-BaVtInFwpYYTs6ln6ttoXiU7hrnRqtvUag=w2400" alt="Foursqure Icon" class="pofHeaderIcon headerIcon"><h3>Points of Interest</h3>');
   for (let i = 0; i < responseJson.response.groups[0].items.length; i++) {
@@ -80,9 +75,6 @@ function displayEventResults(responseJson) {
       <li>    - ${venue.location.formattedAddress}</li>`
     );
   }
-  
-  console.log('events working?');
-
 }
 let today = new Date();
 let dd = String(today.getDate()).padStart(2,'0');
@@ -107,8 +99,6 @@ function getEventsInfo() {
 
   const eventsQueryString = formatQueryParams(params);
   const eventsURL = baseURLEvents + '?' + eventsQueryString;
-
-  console.log(eventsURL);
 
   fetch(eventsURL)
     .then(response => {
