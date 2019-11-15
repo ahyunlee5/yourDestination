@@ -14,11 +14,11 @@ header {
     padding: 15px;
 }
 .background {
-    display: flex;
-    height: 480px;
+    display: inline-flex;
+    height: auto;
     width: 100%;
 
-    background: #88BAAE;
+    background-color: #88BAAE;
 
     position: relative;
     /* text-align: center; */
@@ -33,9 +33,15 @@ header {
     100% {top: 0px;left: 0%;}
 
 }
+.background-image {
+    max-width: 100%;
+    width: auto;
+    max-height: 100%;
+    height: auto;
+}
 #slogan {
-    padding-left: 200px;
-    padding-top: 200px;
+    padding-left: 150px;
+    padding-top: 150px;
     color: white;
     font-size: 55px;
 }
@@ -160,15 +166,14 @@ button {
 
 @media screen and (max-width: 1300px) {
     .background {
-        max-width: 100%;
-        width: auto;
         flex-shrink: 1;
     }
     #slogan {
         display: flex;
 
-        padding-left: 150px;
-        padding-top: 150px;
+        padding-left: 100px;
+        padding-top: 100px;
+        padding-left: 50px;
         font-size: 45px;
         
         
@@ -178,14 +183,13 @@ button {
 @media screen and (max-width: 1150px) {
     .background {
         flex-shrink: 1;
-        flex-wrap: wrap;
         max-width: 100%;
-        width: auto;
        
     }
     #slogan {
         padding-left: 100px;
         padding-top: 100px;
+        padding-left: 50px;
         font-size: 45px;
         
         
@@ -194,8 +198,9 @@ button {
 }
 @media screen and (max-width: 1075px) {
     #slogan {
-        padding-left: 50px;
+        padding-left: 100px;
         padding-top: 150px;
+        padding-left: 50px;
         font-size: 40px;
         
         position: relative;
@@ -204,8 +209,9 @@ button {
 }
 @media screen and (max-width: 990px) {
     #slogan {
-        padding-left: 20px;
+        padding-left: 80px;
         padding-top: 100px;
+        padding-left: 50px;
     }
 }
 @media screen and (max-width: 940px) {
@@ -214,6 +220,46 @@ button {
     }
     #slogan {
         overflow: hidden;
+        padding-left: 50px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .background {
+        display: inline-block;
+        text-align: center;
+    }
+    #slogan {
+        display: inline-block;
+
+        padding-top: 0px;
+    }
+    .formContainer {
+        padding: 0px;
+    }
+}
+@media screen and (max-width: 585px) {
+    .header {
+        padding: 0px;
+    }
+    .background-image {
+        max-width: auto;
+        width: auto;
+        max-height: auto;
+        height: auto;
+    }
+    button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #slogan {
+        font-size: 13vw;
+        padding: 0;
+    }
+}
+@media screen and (max-width: 450px) {
+    form {
+        width: 357px;
     }
 }
 
