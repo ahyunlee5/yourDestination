@@ -15,7 +15,7 @@ function typeWriter() {
 typeWriter();
 
 const apiKeyWeather = 'ee39c62532f58903fd4b58e2a23f45ea';
-const baseURLWeather = 'http://api.weatherstack.com/current';
+const baseURLWeather = 'https://api.weatherstack.com/current';
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
