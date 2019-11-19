@@ -8,7 +8,7 @@
     align-content: center;
     align-items: baseline;
 
-    padding: 30px;
+    padding-top: 30px;
 }
 header {
     padding: 15px;
@@ -64,6 +64,8 @@ form {
 
     font-size: 20px;
     padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
 }
 button {
     border: none;
@@ -86,7 +88,7 @@ button {
     display: inline-flex;
     justify-content: space-between;
     text-align: center;
-    font-size: 20px;
+    font-size: 30px;
 }
 .weather {
     display: inline-flex;
@@ -96,27 +98,34 @@ button {
     align-items: center;
 
     width: 500px;
-    height: 400px;
+    height: 500px;
 
     list-style-type: none;
 
-    background: #16394b;
-    border-radius: 25px;
+    /* background: #16394b; */
+    border: 1px solid black;
+    border-radius: 50%;
     padding: 25px;
+}
+.temp {
+    font-size: 120px;
+    color: black;
+    padding-bottom: 50px;
+    padding-top: 5px;
+
 }
 .weatherIcon {
     float: left;
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     padding: 10px;
+    border-radius: 50%;
 }
 .weatherInfo {
-    color: white;
+    color: black;
 
-    font-size: 28px;
+    font-size: 22px;
     float: right;
-
-    padding: 5px;
 }
 .events {
     width: 100%;
@@ -125,6 +134,7 @@ button {
 
     padding: 25px;
     line-height: 30px;
+    margin-top: 50px;
 
     overflow: scroll;
 
@@ -138,11 +148,12 @@ button {
     border-radius: 25px;
 }
 .events-top-header {
-    background-color: #f94777;
     border-radius: 25px;
-    color: white;
-    padding-right: 15px;
+    color: #88BAAE;
+    padding-left: 50px;
     margin: 10px;
+
+    width: 100%;
 }
 .weather-top-header {
     background-color: #2588f1;
@@ -231,12 +242,21 @@ button {
 
         padding-top: 0px;
     }
+    .weatherIcon {
+        max-width: 100%;
+        width: auto;
+        max-height: 100%;
+        height: auto;
+    }
 }
 @media screen and (max-width: 640px) {
     button {
         display: block;
         margin-left: auto;
         margin-right: auto;
+    }
+    .weather {
+        border-radius: 25px;
     }
 }
 @media screen and (max-width: 585px) {

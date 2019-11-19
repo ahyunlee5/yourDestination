@@ -15,7 +15,7 @@ function typeWriter() {
 typeWriter();
 
 const apiKeyWeather = 'ee39c62532f58903fd4b58e2a23f45ea';
-const baseURLWeather = 'https://api.weatherstack.com/current';
+const baseURLWeather = 'http://api.weatherstack.com/current';
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -25,10 +25,11 @@ function formatQueryParams(params) {
 
 function displayWeatherResult(responseJson) {
   $('.weather').empty();
-  $('.weather-top-header').html('<img src="https://lh3.googleusercontent.com/dEZIXqySRRWUsxYY33wYClESqpWWzZIDWBHrfk5TcVF_fzag1Cebk6OnkJfCMoSuT-NaXiha4bI0_EE3PgVAJzHGALWarS2kaXzhWH7ouYnKN5-QsdPwsbvUZVPSiPbt2fqub033Cw=w2400" alt="weather icon" class="weatherHeaderIcon headerIcon"><h3>Weather</h3>');
   $('.weather').html(
-    `<img src="${responseJson.current.weather_icons}" alt="weather icon" class='weatherIcon'>
-        <li class='weatherInfo'>Temperature: ${responseJson.current.temperature}°F(feels like: ${responseJson.current.feelslike}°F)</li>
+    `<li class='weatherInfo'>${responseJson.location.name}</li>
+    <img src="${responseJson.current.weather_icons}" alt="weather icon" class='weatherIcon'>
+        <li class='temp'>${responseJson.current.temperature}°F</li>
+        <li class='weatherInfo'>Feels like: ${responseJson.current.feelslike}°F</li>
         <li class='weatherInfo'>Description: ${responseJson.current.weather_descriptions[0]}</li>`
   );
   $('main').removeClass('hidden');
@@ -64,7 +65,7 @@ const baseURLEvents = 'https://api.foursquare.com/v2/venues/explore';
 
 function displayEventResults(responseJson) {
   $('.events').empty();
-  $('.events-top-header').html('<img src="https://lh3.googleusercontent.com/Otrv0PBO7rwv4YVlkcqjv9eEFri6pHWL_uQtzZtTvN4-KoXkrIwxzM6IDSw4WP-pFGFAXE1I_LV_IAH_WSBNEiDqXs6JdvcfCvqLnkd-BaVtInFwpYYTs6ln6ttoXiU7hrnRqtvUag=w2400" alt="Foursqure Icon" class="pofHeaderIcon headerIcon"><h3>Points of Interest</h3>');
+  $('.events-top-header').html('<h3>Points of Interest</h3>');
   for (let i = 0; i < responseJson.response.groups[0].items.length; i++) {
     let venue = responseJson.response.groups[0].items[i].venue;
     let { prefix, suffix } = venue.categories[0].icon;
@@ -131,4 +132,4 @@ function magic() {
   watchForm();
 }
 
-$(magic());
+$(magic);
