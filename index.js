@@ -68,7 +68,7 @@ function displayEventResults(responseJson) {
   $('.events-top-header').html('<h3>Points of Interest</h3>');
   for (let i = 0; i < responseJson.response.groups[0].items.length; i++) {
     let venue = responseJson.response.groups[0].items[i].venue;
-    let { prefix, suffix } = venue.categories[0].icon;
+    // let { prefix, suffix } = venue.categories[0].icon;
 
     $('.events').append(
       `<li id="icon-contianer"><img src=${venue.categories[0].icon.prefix}64${venue.categories[0].icon.suffix}></li>
