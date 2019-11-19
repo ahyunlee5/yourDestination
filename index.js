@@ -1,21 +1,28 @@
 'use strict';
+const typeWriterVariables = {
+  i: 0,
+  txt: 'Live to Travel, Travel to Live',
+  speed: 100,
+};
 
-let i = 0;
-const txt = 'Live to Travel, Travel to Live';
-const speed = 100;
 
 function typeWriter() {
-  if (i < txt.length) {
-    document.getElementById('slogan').innerHTML += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
+  if (typeWriterVariables.i < typeWriterVariables.txt.length) {
+    document.getElementById('slogan').innerHTML += typeWriterVariables.txt.charAt(typeWriterVariables.i);
+    typeWriterVariables.i++;
+    setTimeout(typeWriter, typeWriterVariables.speed);
   }
 }
 
 typeWriter();
 
-const apiKeyWeather = 'ee39c62532f58903fd4b58e2a23f45ea';
-const baseURLWeather = 'http://api.weatherstack.com/current';
+const requirements = {
+  apiKeyWeather: 'ee39c62532f58903fd4b58e2a23f45ea',
+  baseURLWeather: 'http://api.weatherstack.com/current',
+  eventsClientID: 'J5YO3IQNB235ED5HSIF25UGXEKM0EQRIJ2KB0R2IELSNST3Y',
+  eventsClientSecret: 'TOH3JWOLW0M11S0KZMTQMJ35USVF5RG1YJG4OWTP5GB0EVEM',
+  baseURLEvents: 'https://api.foursquare.com/v2/venues/explore',
+};
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -37,7 +44,7 @@ function displayWeatherResult(responseJson) {
 
 function getWeatherInfo() {
   const params = {
-    access_key: apiKeyWeather,
+    access_key: requirements.apiKeyWeather,
     query: $('#search-place').val(),
     hourly: 1,
     interval: 12,
@@ -45,7 +52,7 @@ function getWeatherInfo() {
   };
   
   const weatherQueryString = formatQueryParams(params);
-  const weatherURL = baseURLWeather + '?' + weatherQueryString;
+  const weatherURL = requirements.baseURLWeather + '?' + weatherQueryString;
 
   fetch(weatherURL)
     .then(response => {
@@ -59,21 +66,16 @@ function getWeatherInfo() {
     });
 }
 
-const eventsClientID = 'J5YO3IQNB235ED5HSIF25UGXEKM0EQRIJ2KB0R2IELSNST3Y';
-const eventsClientSecret = 'TOH3JWOLW0M11S0KZMTQMJ35USVF5RG1YJG4OWTP5GB0EVEM';
-const baseURLEvents = 'https://api.foursquare.com/v2/venues/explore';
-
 function displayEventResults(responseJson) {
   $('.events').empty();
-  $('.events-top-header').html('<h3>Points of Interest</h3>');
+  $('.events-top-header').html('<h3>Points of Interest:</h3>');
   for (let i = 0; i < responseJson.response.groups[0].items.length; i++) {
     let venue = responseJson.response.groups[0].items[i].venue;
-    // let { prefix, suffix } = venue.categories[0].icon;
 
     $('.events').append(
       `<li id="icon-contianer"><img src=${venue.categories[0].icon.prefix}64${venue.categories[0].icon.suffix}></li>
-      <li>${venue.name} (${venue.categories[0].name})</li>
-      <li>    - ${venue.location.formattedAddress}</li>`
+      <li class='eventInfo'>${venue.name} (${venue.categories[0].name})</li>
+      <li>${venue.location.formattedAddress}</li>`
     );
   }
 }
@@ -87,8 +89,8 @@ today = yyyy + mm + dd;
 function getEventsInfo() {
   const nearParam = $('#search-place').val().toLowerCase();  
   const params = {
-    client_id: eventsClientID,
-    client_secret: eventsClientSecret,
+    client_id: requirements.eventsClientID,
+    client_secret: requirements.eventsClientSecret,
     near: nearParam,
     section: 'topPicks',
     limit: 30,
@@ -99,7 +101,7 @@ function getEventsInfo() {
   
 
   const eventsQueryString = formatQueryParams(params);
-  const eventsURL = baseURLEvents + '?' + eventsQueryString;
+  const eventsURL = requirements.baseURLEvents + '?' + eventsQueryString;
 
   fetch(eventsURL)
     .then(response => {
