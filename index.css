@@ -58,19 +58,6 @@ form {
     from {visibility: hidden;}
     to {visibility: visible;}
 }
-.msg {
-    text-align: center;
-    padding-top: 20px;
-    font-size: 22px;
-
-    animation-name: unhidetohide;
-    animation-delay: 6s;
-    animation-fill-mode: both;
-}
-@keyframes unhidetohide {
-    from {visibility: visible;}
-    to {visibility: hidden;}
-}
 #search-place {
     height: 43px;
     width: 450px;

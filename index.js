@@ -17,8 +17,8 @@ function typeWriter() {
 typeWriter();
 
 const requirements = {
-  apiKeyWeather: 'ee39c62532f58903fd4b58e2a23f45ea',
-  baseURLWeather: 'http://api.weatherstack.com/current',
+  apiKeyWeather: '0e6a6c22248bd9497b95810c79f846e9',
+  baseURLWeather: 'http://api.openweathermap.org/data/2.5/weather',
   eventsClientID: 'J5YO3IQNB235ED5HSIF25UGXEKM0EQRIJ2KB0R2IELSNST3Y',
   eventsClientSecret: 'TOH3JWOLW0M11S0KZMTQMJ35USVF5RG1YJG4OWTP5GB0EVEM',
   baseURLEvents: 'https://api.foursquare.com/v2/venues/explore',
@@ -31,24 +31,24 @@ function formatQueryParams(params) {
 }
 
 function displayWeatherResult(responseJson) {
+  var rounding = Math.round(responseJson.main.temp);
+
   $('.weather').empty();
   $('.weather').html(
-    `<li class='weatherInfo'>${responseJson.location.name}</li>
-    <img src="${responseJson.current.weather_icons}" alt="weather icon" class='weatherIcon'>
-        <li class='temp'>${responseJson.current.temperature}°F</li>
-        <li class='weatherInfo'>Feels like: ${responseJson.current.feelslike}°F</li>
-        <li class='weatherInfo'>Description: ${responseJson.current.weather_descriptions[0]}</li>`
+    `<li class='weatherInfo'>${responseJson.name}</li>
+    <img src="http://openweathermap.org/img/w/${responseJson.weather[0].icon}.png" alt="weather icon" class='weatherIcon'>
+        <li class='temp'>${rounding}°F</li>
+        <li class='weatherInfo'>Min:${Math.round(responseJson.main.temp_min)}°F/ Max:${Math.round(responseJson.main.temp_max)}°F</li>
+        <li class='weatherInfo'>Description: ${responseJson.weather[0].description}</li>`
   );
   $('main').removeClass('hidden');
 }
 
 function getWeatherInfo() {
   const params = {
-    access_key: requirements.apiKeyWeather,
-    query: $('#search-place').val(),
-    hourly: 1,
-    interval: 12,
-    units: 'f',
+    APPID: requirements.apiKeyWeather,
+    q: $('#search-place').val(),
+    units: 'imperial',
   };
   
   const weatherQueryString = formatQueryParams(params);
@@ -57,6 +57,7 @@ function getWeatherInfo() {
   fetch(weatherURL)
     .then(response => {
       if (response.ok) {
+        console.log(response.Json);
         return response.json();
       } throw new Error (response.statusText);
     })
