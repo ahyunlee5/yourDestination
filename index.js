@@ -18,7 +18,7 @@ typeWriter();
 
 const requirements = {
   apiKeyWeather: '0e6a6c22248bd9497b95810c79f846e9',
-  baseURLWeather: 'http://api.openweathermap.org/data/2.5/weather',
+  baseURLWeather: 'https://api.openweathermap.org/data/2.5/weather',
   eventsClientID: 'J5YO3IQNB235ED5HSIF25UGXEKM0EQRIJ2KB0R2IELSNST3Y',
   eventsClientSecret: 'TOH3JWOLW0M11S0KZMTQMJ35USVF5RG1YJG4OWTP5GB0EVEM',
   baseURLEvents: 'https://api.foursquare.com/v2/venues/explore',
