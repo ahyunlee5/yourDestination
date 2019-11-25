@@ -17,8 +17,8 @@ function typeWriter() {
 typeWriter();
 
 const requirements = {
-  apiKeyWeather: '0e6a6c22248bd9497b95810c79f846e9',
-  baseURLWeather: 'https://api.openweathermap.org/data/2.5/weather',
+  apiKeyWeather: 'ee39c62532f58903fd4b58e2a23f45ea',
+  baseURLWeather: 'https://api.weatherstack.com/current',
   eventsClientID: 'J5YO3IQNB235ED5HSIF25UGXEKM0EQRIJ2KB0R2IELSNST3Y',
   eventsClientSecret: 'TOH3JWOLW0M11S0KZMTQMJ35USVF5RG1YJG4OWTP5GB0EVEM',
   baseURLEvents: 'https://api.foursquare.com/v2/venues/explore',
@@ -31,24 +31,24 @@ function formatQueryParams(params) {
 }
 
 function displayWeatherResult(responseJson) {
-  var rounding = Math.round(responseJson.main.temp);
+  // var rounding = Math.round(responseJson.main.temp);
 
   $('.weather').empty();
   $('.weather').html(
-    `<li class='weatherInfo'>${responseJson.name}</li>
-    <img src="http://openweathermap.org/img/w/${responseJson.weather[0].icon}.png" alt="weather icon" class='weatherIcon'>
-        <li class='temp'>${rounding}°F</li>
-        <li class='weatherInfo'>Min:${Math.round(responseJson.main.temp_min)}°F/ Max:${Math.round(responseJson.main.temp_max)}°F</li>
-        <li class='weatherInfo'>Description: ${responseJson.weather[0].description}</li>`
+    `<li class='weatherInfo'>${responseJson.location.name}</li>
+    <img src="${responseJson.current.weather_icons}" alt="weather icon" class='weatherIcon'>
+        <li class='temp'>${responseJson.current.temperature}°F</li>
+        <li class='weatherInfo'>${responseJson.current.feelslike}°F</li>
+        <li class='weatherInfo'>Description: ${responseJson.current.weather_descriptions}</li>`
   );
   $('main').removeClass('hidden');
 }
 
 function getWeatherInfo() {
   const params = {
-    APPID: requirements.apiKeyWeather,
-    q: $('#search-place').val(),
-    units: 'imperial',
+    access_key: requirements.apiKeyWeather,
+    query: $('#search-place').val(),
+    units: 'f',
   };
   
   const weatherQueryString = formatQueryParams(params);
